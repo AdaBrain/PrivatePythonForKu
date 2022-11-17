@@ -86,9 +86,46 @@ sample_dict = {
 }
 
 def change_dict_key(target, old_key, new_key):
+    if not target.get(old_key): 
+        return
+
     target[new_key] = target[old_key]
     del target[old_key]
 
 change_dict_key(sample_dict, "city", "location")
 change_dict_key(sample_dict, "age", "years")
 print(sample_dict)
+
+
+## Problem
+'''Write a Python program to create a new dictionary by extracting the mentioned keys from the below dictionary.'''
+
+# input 
+sample_dict = {
+    "name": "Kelly",
+    "age": 25,
+    "salary": 8000,
+    "city": "New york"
+}
+# Keys to extract
+keys = ["name", "salary"]
+
+# output: {'name': 'Kelly', 'salary': 8000}
+
+def extract_from_keys(target, keys):
+    result = dict()
+    for (k, v) in target.items():
+        if k in keys:
+            result[k] = v
+    
+    return result
+
+d1 = extract_from_keys(sample_dict, ["name"])
+d2 = extract_from_keys(sample_dict, ["name", "salary"])
+print(d1)
+print(d2)
+
+if sample_dict.get("name"):
+    print("adabrain:", sample_dict.get("name1"))
+else:
+    print("Key not found")
